@@ -28,7 +28,7 @@ class App extends Component {
       <div className="App">
         <header className="App_header">
           <h1>
-            <Link to="/" className="link">Find My Weather</Link>
+            <Link to="/" className="link">Weathertop</Link>
           </h1>
         </header>
         <main className="App_main">
