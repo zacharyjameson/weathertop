@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Searchbar from "./Searchbar/Searchbar";
 import { Route, Link } from "react-router-dom";
 import Go from "./GoPage/Go";
+import "./App.css"
+import HomePage from './HomePage/HomePage'
 
 class App extends Component {
   constructor(props) {
@@ -16,6 +18,7 @@ class App extends Component {
       <>
         <Route path="/weather-search" component={Searchbar} />
         <Route path="/welcome" component={Go} />
+        <Route exact path="/" component={HomePage} />
       </>
     );
   }
@@ -25,7 +28,7 @@ class App extends Component {
       <div className="App">
         <header className="App_header">
           <h1>
-            <Link to="/weather-search">Find My Weather</Link>
+            <Link to="/" className="link">Find My Weather</Link>
           </h1>
         </header>
         <main className="App_main">

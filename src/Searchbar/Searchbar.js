@@ -6,11 +6,11 @@ class Searchbar extends Component {
     return (
       <div className="searchbar_main">
         <header>
-          <h2>
-            <Link to="/">Home</Link>
-          </h2>
+          <h4>
+            <Link to="/" className="link">Back</Link>
+          </h4>
         </header>
-        <label htmlFor="searchbar_box">Enter a City</label>
+        <label htmlFor="searchbar_box">Enter a City:</label>{" "}
         <input
           type="text"
           name="searchbar_box"
@@ -18,6 +18,7 @@ class Searchbar extends Component {
           placeholder="Los Angeles"
           required
         />
+        <button type="submit" value="submit">Submit</button>
       </div>
     );
   }
