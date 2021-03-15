@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import config from "../config.js";
 
 class Searchbar extends Component {
   constructor(props) {
@@ -8,7 +7,6 @@ class Searchbar extends Component {
     this.state = {
       unit: "",
       query: "",
-      data: []
     };
   }
 
@@ -31,19 +29,20 @@ class Searchbar extends Component {
     const query = this.state.query;
     const unit = this.state.unit;
     const key = "0ddf041fb53a2aff9b34fe18f7ed9ebd";
-    const url = `api.openweathermap.org/data/2.5/weather?&APPID=${key}&units=${unit}&q=${query}`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?&APPID=${key}&units=${unit}&q=${query}`;
     console.log(query, unit);
 
     fetch(url)
-      .then((response) => {
+      .then((weather) => {
         console.log(url);
-        if (!response.ok) {
+        if (!weather.ok) {
           throw new Error("The weather isn't weather. Please try again later.");
         }
-        return response.json();
+        console.log('Response:', weather);
+        return weather.json();
       })
-      .then((responseJson) => {
-        console.log(responseJson);
+      .then((weatherJson) => {
+        console.log('JSON:', weatherJson.main);
       })
       .catch((error) => {
         console.log("Error: ", error);

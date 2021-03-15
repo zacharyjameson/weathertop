@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Searchbar from "./Searchbar/Searchbar";
 import { Route, Link } from "react-router-dom";
-import Go from "./GoPage/Go";
 import "./App.css"
 import HomePage from './HomePage/HomePage'
 
@@ -17,7 +16,6 @@ class App extends Component {
     return (
       <>
         <Route path="/weather-search" component={Searchbar} />
-        <Route path="/welcome" component={Go} />
         <Route exact path="/" component={HomePage} />
       </>
     );
