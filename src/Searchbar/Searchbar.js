@@ -8,6 +8,7 @@ class Searchbar extends Component {
     this.state = {
       unit: "",
       query: "",
+      data: []
     };
   }
 
@@ -29,18 +30,13 @@ class Searchbar extends Component {
     e.preventDefault();
     const query = this.state.query;
     const unit = this.state.unit;
+    const key = "0ddf041fb53a2aff9b34fe18f7ed9ebd";
+    const url = `api.openweathermap.org/data/2.5/weather?&APPID=${key}&units=${unit}&q=${query}`;
     console.log(query, unit);
 
-    const requestOptions = {
-      method: "GET",
-      body: JSON.stringify({
-        query: `${query}`,
-        unit: `${unit}`,
-      }),
-    };
-
-    fetch(`${(config.API_ENDPOINT, requestOptions)}`)
+    fetch(url)
       .then((response) => {
+        console.log(url);
         if (!response.ok) {
           throw new Error("The weather isn't weather. Please try again later.");
         }
