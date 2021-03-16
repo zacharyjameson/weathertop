@@ -18,10 +18,10 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App_main">
         <header className="App_header">
           <h1>
-            <Link to="/" className="link">
+            <Link to="/" className="title link">
               Weathertop
             </Link>
           </h1>

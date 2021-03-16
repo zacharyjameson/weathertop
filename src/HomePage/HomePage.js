@@ -5,7 +5,7 @@ import '../App.css'
 class HomePage extends Component {
   render() {
     return (
-      <div className="homepage_main">
+      <div className="App_main">
         <h4>
           <Link to="/weather-search" className="link">I don't feel like looking outside.</Link>
         </h4>

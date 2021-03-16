@@ -64,7 +64,7 @@ class Searchbar extends Component {
     };
     return (
       <ApiContext.Provider value={value}>
-        <form onSubmit={this.handleSubmit}>
+        <form className="App_main" onSubmit={this.handleSubmit}>
           <div className="searchbar_main">
             <nav>
               <h4>

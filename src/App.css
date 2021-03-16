@@ -1,16 +1,53 @@
+@font-face {
+  font-family: fairlyodd;
+  src: url(BandeinsStrangeVariable.ttf);
+}
+
 * {
-    text-align: center;
+  text-align: center;
+  font-family: fairlyodd;
+  box-sizing: border-box;
+}
+
+.App_header {
+    margin: auto;
+    padding-top: 80px;
+}
+
+a:visited {
+  color: cadetblue;
 }
 
 a {
-    list-style: none;
+  color: white;
+}
+
+.link:hover {
+  color: cadetblue;
+  font-size: 17px;
+}
+
+.title:hover {
+    font-size: 35px;
+}
+
+html {
+  background: url(images/lake2.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+a {
+  list-style: none;
 }
 
 .link {
-    list-style: none;
-    text-decoration: none;
+  list-style: none;
+  text-decoration: none;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
