@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import ApiContext from "../ApiContext";
+import config from "../config";
+import Results from "../Results/Results";
 
 class Searchbar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      unit: "",
-      query: "",
-    };
-  }
+  state = {
+    unit: "",
+    query: "",
+  };
 
   handleUnit = (e) => {
     this.setState({
@@ -28,8 +28,8 @@ class Searchbar extends Component {
     e.preventDefault();
     const query = this.state.query;
     const unit = this.state.unit;
-    const key = "0ddf041fb53a2aff9b34fe18f7ed9ebd";
-    const url = `https://api.openweathermap.org/data/2.5/weather?&APPID=${key}&units=${unit}&q=${query}`;
+    const url = `${config.API_ENDPOINT}${config.KEY}&units=${unit}&q=${query}`;
+    const path = `results/${query}`;
     console.log(query, unit);
 
     fetch(url)
@@ -38,11 +38,18 @@ class Searchbar extends Component {
         if (!weather.ok) {
           throw new Error("The weather isn't weather. Please try again later.");
         }
-        console.log('Response:', weather);
+        //console.log("Response:", weather);
         return weather.json();
       })
       .then((weatherJson) => {
-        console.log('JSON:', weatherJson.main);
+        this.setState({
+          current_temp: weatherJson.main.temp,
+          max_temp: weatherJson.main.temp_max,
+          min_temp: weatherJson.main.temp_min,
+        });
+        console.log("JSON:", weatherJson);
+        console.log("State: ", this.state);
+        this.props.history.push(path);
       })
       .catch((error) => {
         console.log("Error: ", error);
@@ -50,38 +57,46 @@ class Searchbar extends Component {
   };
 
   render() {
+    const value = {
+      current_temp: this.state.current_temp,
+      max_temp: this.state.max_temp,
+      min_temp: this.state.min_temp,
+    };
     return (
-      <form onSubmit={this.handleSubmit}>
-        <div className="searchbar_main">
-          <header>
-            <h4>
-              <Link to="/" className="link">
-                Back
-              </Link>
-            </h4>
-          </header>
-          <label htmlFor="searchbar_box">Enter a City:</label>{" "}
-          <input
-            type="text"
-            name="searchbar_box"
-            id="searchbar_box"
-            placeholder="Los Angeles"
-            onChange={this.handleQuery}
-            required
-          />{" "}
-          <br />
-          <label htmlFor="unit">Unit of measurement:</label>{" "}
-          <select id="unit" name="unit" onChange={this.handleUnit} required>
-            <option value="standard">Select one...</option>
-            <option value="imperial">Imperial</option>
-            <option value="metric">Metric</option>
-          </select>
-          <br />
-          <button type="submit" value="submit">
-            Submit
-          </button>
-        </div>
-      </form>
+      <ApiContext.Provider value={value}>
+        <form onSubmit={this.handleSubmit}>
+          <div className="searchbar_main">
+            <nav>
+              <h4>
+                <Link to="/" className="link">
+                  <button type="button" value="Back">
+                    Back
+                  </button>
+                </Link>
+              </h4>
+            </nav>
+            <label htmlFor="searchbar_box">Enter a City:</label>{" "}
+            <input
+              type="text"
+              name="searchbar_box"
+              id="searchbar_box"
+              placeholder="Los Angeles"
+              onChange={this.handleQuery}
+              required
+            />{" "}
+            <br />
+            <label htmlFor="unit">Unit of measurement:</label>{" "}
+            <select id="unit" name="unit" onChange={this.handleUnit} required>
+              <option value="standard">Select one...</option>
+              <option value="imperial">Imperial</option>
+              <option value="metric">Metric</option>
+            </select>
+            <br />
+            <input type="submit" value="Submit" />
+          </div>
+        </form>
+        <Results />
+      </ApiContext.Provider>
     );
   }
 }
