@@ -29,7 +29,6 @@ class Searchbar extends Component {
     const query = this.state.query;
     const unit = this.state.unit;
     const url = `${config.API_ENDPOINT}${config.KEY}&units=${unit}&q=${query}`;
-    const path = `results/${query}`;
     console.log(query, unit);
 
     fetch(url)
@@ -46,10 +45,10 @@ class Searchbar extends Component {
           current_temp: weatherJson.main.temp,
           max_temp: weatherJson.main.temp_max,
           min_temp: weatherJson.main.temp_min,
+          description: weatherJson.weather[0].description,
         });
         console.log("JSON:", weatherJson);
         console.log("State: ", this.state);
-        this.props.history.push(path);
       })
       .catch((error) => {
         console.log("Error: ", error);
@@ -61,6 +60,7 @@ class Searchbar extends Component {
       current_temp: this.state.current_temp,
       max_temp: this.state.max_temp,
       min_temp: this.state.min_temp,
+      description: this.state.description
     };
     return (
       <ApiContext.Provider value={value}>

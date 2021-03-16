@@ -1,21 +1,21 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import ApiContext from "../ApiContext";
+import "../App.css";
 
 class Results extends Component {
   static contextType = ApiContext;
   render() {
+    const weather = this.context;
+
     return (
-      <div className="results">
-        <Link to="/weather-search">
-          <button type="button" value="submit">
-            Try Another
-          </button>
-        </Link>
-        <div className="main_temp">
-          {this.context.current_temp}
+      <div className="App_main">
+        <div className={weather.current_temp ? "results" : "results hidden"}>
           <br />
-          {this.context.max_temp}
+          <p>Current</p>
+          <h1>{Math.round(weather.current_temp)}&deg;</h1>
+          <p>{weather.description}</p>
+          High: {Math.round(weather.max_temp)}&deg;, Low:{" "}
+          {Math.round(weather.min_temp)}&deg;
         </div>
       </div>
     );
