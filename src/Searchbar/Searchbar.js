@@ -10,7 +10,7 @@ class Searchbar extends Component {
     query: "",
   };
 
-  handleUnit = (e) => {
+  handleUnitClick = (e) => {
     this.setState({
       unit: e.target.value,
     });
@@ -61,6 +61,7 @@ class Searchbar extends Component {
       max_temp: this.state.max_temp,
       min_temp: this.state.min_temp,
       description: this.state.description,
+      unit: this.state.unit
     };
     return (
       <ApiContext.Provider value={value}>
@@ -75,18 +76,19 @@ class Searchbar extends Component {
               onChange={this.handleQuery}
               required
             />
+            
             <br />
-            <label htmlFor="unit">Unit of measurement:</label>{" "}
-            <select id="unit" name="unit" onChange={this.handleUnit} required>
-              <option value="standard">Select one...</option>
-              <option value="imperial">Imperial</option>
-              <option value="metric">Metric</option>
-            </select>
+            <div>Temperature Scale</div>
+            <ul className="container" onClick={this.handleUnitClick}>
+              <li className="item"><button type="button" className={this.state.unit === 'metric' ? "unitButton activeUnit" : "unitButton"} value="metric">&deg;C</button></li>
+              <li className="item"><button type="button" className={this.state.unit === 'imperial' ? "unitButton activeUnit" : "unitButton"} value="imperial">&deg;F</button></li>
+              <li className="item"><button type="button" className={this.state.unit === 'standard' ? "unitButton activeUnit" : "unitButton"} value="standard">&deg;K</button></li>
+            </ul>
             <br />
-            <Link  to="/">
+            <Link to="/weathertop">
               <button id="inputbutton" type="button" value="Back">
                 Back
-              </button> {" "}
+              </button>{" "}
             </Link>
             <input id="inputbutton" type="submit" value="Submit" />
           </div>

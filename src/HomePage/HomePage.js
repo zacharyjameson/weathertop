@@ -7,7 +7,7 @@ class HomePage extends Component {
     return (
       <div className="App_home">
         <h4>
-          <Link to="/weather-search" className="link">I don't feel like looking outside.</Link>
+          <Link to="/weather-search"><button id="findmyweather">Find My Weather</button></Link>
         </h4>
       </div>
     );
