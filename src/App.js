@@ -9,7 +9,7 @@ class App extends Component {
   renderMainRoutes() {
     return (
       <>
-        <Route exact path="/weathertop" component={HomePage} />
+        <Route exact path="/" component={HomePage} />
         <Route path="/weather-search" component={Searchbar} />
         <Route path="/results" component={Results} />
       </>
@@ -21,7 +21,7 @@ class App extends Component {
       <div className="App_main">
         <header className="App_header">
           <h1>
-            <Link to="/weathertop" className="title link">
+            <Link to="/" className="title link">
               Weathertop
             </Link>
           </h1>
