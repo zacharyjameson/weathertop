@@ -60,21 +60,12 @@ class Searchbar extends Component {
       current_temp: this.state.current_temp,
       max_temp: this.state.max_temp,
       min_temp: this.state.min_temp,
-      description: this.state.description
+      description: this.state.description,
     };
     return (
       <ApiContext.Provider value={value}>
         <form className="App_main" onSubmit={this.handleSubmit}>
           <div className="searchbar_main">
-            <nav>
-              <h4>
-                <Link to="/" className="link">
-                  <button type="button" value="Back">
-                    Back
-                  </button>
-                </Link>
-              </h4>
-            </nav>
             <label htmlFor="searchbar_box">Enter a City:</label>{" "}
             <input
               type="text"
@@ -83,7 +74,7 @@ class Searchbar extends Component {
               placeholder="Los Angeles"
               onChange={this.handleQuery}
               required
-            />{" "}
+            />
             <br />
             <label htmlFor="unit">Unit of measurement:</label>{" "}
             <select id="unit" name="unit" onChange={this.handleUnit} required>
@@ -92,7 +83,12 @@ class Searchbar extends Component {
               <option value="metric">Metric</option>
             </select>
             <br />
-            <input type="submit" value="Submit" />
+            <Link  to="/">
+              <button id="inputbutton" type="button" value="Back">
+                Back
+              </button> {" "}
+            </Link>
+            <input id="inputbutton" type="submit" value="Submit" />
           </div>
         </form>
         <Results />

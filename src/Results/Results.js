@@ -8,9 +8,8 @@ class Results extends Component {
     const weather = this.context;
 
     return (
-      <div className="App_main">
+      <div className="App_results">
         <div className={weather.current_temp ? "results" : "results hidden"}>
-          <br />
           <p>Current</p>
           <h1>{Math.round(weather.current_temp)}&deg;</h1>
           <p>{weather.description}</p>

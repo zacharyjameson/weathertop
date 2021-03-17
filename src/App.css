@@ -10,12 +10,13 @@
 }
 
 .App_header {
-    margin: auto;
-    padding-top: 80px;
+  margin: auto;
+  padding-top: 80px;
+  text-shadow: 2px 2px 4px #313030;
 }
 
 a:visited {
-  color: cadetblue;
+  color: rgb(144, 202, 204);
 }
 
 a {
@@ -23,12 +24,12 @@ a {
 }
 
 .link:hover {
-  color: cadetblue;
+  color: #1db954;
   font-size: 17px;
 }
 
 .title:hover {
-    font-size: 35px;
+  font-size: 35px;
 }
 
 html {
@@ -50,4 +51,57 @@ a {
 
 .hidden {
   display: none;
+}
+
+#inputbutton {
+  border: 0;
+  border-radius: 10px;
+  width: 80px;
+  height: 20px;
+  margin-top: 10px;
+  box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.493);
+  font-family: fairlyodd;
+}
+
+input {
+    font-family: fairlyodd;
+}
+
+#inputbutton:hover {
+  cursor: pointer;
+}
+
+#inputbutton:active {
+  transform: translateY(3px);
+}
+
+#searchbar_box {
+  border-radius: 10px;
+  border: 0;
+  height: 25px;
+  margin-bottom: 10px;
+  box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.493);
+}
+
+#unit {
+  border-radius: 10px;
+  border: 0;
+  height: 25px;
+  width: 100px;
+}
+
+.results {
+  text-align: center;
+  background: rgba(85, 83, 83, 0.6);
+  color: white;
+  width: 28%;
+  margin: auto;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 20px;
+  text-shadow: 2px 2px 4px #2c2929;
+}
+
+.App_home {
+  text-shadow: 1px 1px 4px #313030;
 }
