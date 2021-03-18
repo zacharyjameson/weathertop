@@ -46,7 +46,7 @@ class Searchbar extends Component {
     e.preventDefault();
     const query = this.state.query;
     const unit = this.state.unit;
-    const url = `${config.API_ENDPOINT}${config.KEY}&units=${unit}&q=${query}`;
+    const url = `${config.API_ENDPOINT}${config.API_KEY}&units=${unit}&q=${query}`;
     console.log(query, unit);
 
     fetch(url)
