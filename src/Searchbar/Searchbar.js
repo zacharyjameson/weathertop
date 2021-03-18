@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import ApiContext from "../ApiContext";
 import config from "../config";
 import Results from "../Results/Results";
+import City from "./City";
+import TempScale from "./TempScale";
 
 class Searchbar extends Component {
   state = {
@@ -23,6 +25,22 @@ class Searchbar extends Component {
     });
     console.log(e.target.value);
   };
+
+  validateCity() {
+    const validCity = this.state.query.trim();
+    if(validCity.length === 0){
+      return "City is required"
+    } else if (validCity.length > 100) {
+      return "Now you're just being silly"
+    }
+  }
+
+  validateTempScale() {
+    const validTemp = this.state.unit.trim();
+    if(validTemp.length === 0){
+      return "Please select a temperature scale"
+    } 
+  }
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -46,6 +64,8 @@ class Searchbar extends Component {
           max_temp: weatherJson.main.temp_max,
           min_temp: weatherJson.main.temp_min,
           description: weatherJson.weather[0].description,
+          feels_like: weatherJson.main.feels_like,
+          humidity: weatherJson.main.humidity,
         });
         console.log("JSON:", weatherJson);
         console.log("State: ", this.state);
@@ -61,29 +81,21 @@ class Searchbar extends Component {
       max_temp: this.state.max_temp,
       min_temp: this.state.min_temp,
       description: this.state.description,
-      unit: this.state.unit
+      feels_like: this.state.feels_like,
+      humidity: this.state.humidity,
+      unit: this.state.unit,
+      handleQuery: this.handleQuery,
+      handleUnitClick: this.handleUnitClick,
+      validateCity: this.validateCity(),
+      validateTempScale: this.validateTempScale(),
     };
     return (
       <ApiContext.Provider value={value}>
         <form className="App_main" onSubmit={this.handleSubmit}>
           <div className="searchbar_main">
-            <label htmlFor="searchbar_box">Enter a City:</label>{" "}
-            <input
-              type="text"
-              name="searchbar_box"
-              id="searchbar_box"
-              placeholder="Los Angeles"
-              onChange={this.handleQuery}
-              required
-            />
-            
+            <City />
             <br />
-            <div>Temperature Scale</div>
-            <ul className="container" onClick={this.handleUnitClick}>
-              <li className="item"><button type="button" className={this.state.unit === 'metric' ? "unitButton activeUnit" : "unitButton"} value="metric">&deg;C</button></li>
-              <li className="item"><button type="button" className={this.state.unit === 'imperial' ? "unitButton activeUnit" : "unitButton"} value="imperial">&deg;F</button></li>
-              <li className="item"><button type="button" className={this.state.unit === 'standard' ? "unitButton activeUnit" : "unitButton"} value="standard">&deg;K</button></li>
-            </ul>
+            <TempScale />
             <br />
             <Link to="/weathertop">
               <button id="inputbutton" type="button" value="Back">

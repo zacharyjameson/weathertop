@@ -84,13 +84,8 @@ input {
   box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.493);
 }
 
-#unit {
-  border-radius: 10px;
-  border: 0;
-  height: 25px;
-  width: 100px;
-  box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.493);
-
+#searchbar_label {
+  text-shadow: 2px 2px 6px #ffffff;
 }
 
 .results {
@@ -141,16 +136,21 @@ input {
   border: 0;
   cursor: pointer;
   font-size: 20px;
-  text-shadow: 2px 2px 6px #313030;
+  text-shadow: 2px 2px 6px #adadad;
   font-weight: 600;
 }
 
-.unitbutton:hover {
+.unitButton:hover {
   cursor: pointer;
-  font-size: 24px;
+  font-size: 26px;
 }
 
 .activeUnit {
-  font-size: 30px;
+  font-size: 32px;
   color: #1db954;
+}
+
+.error {
+  text-shadow: 2px 2px 6px #ffffff;
+
 }
