@@ -46,7 +46,7 @@ class Searchbar extends Component {
     e.preventDefault();
     const query = this.state.query;
     const unit = this.state.unit;
-    const url = `${config.API_ENDPOINT}${config.API_KEY}&units=${unit}&q=${query}`;
+    const url = `${config.API_ENDPOINT}${config.KEY}&units=${unit}&q=${query}`;
     console.log(query, unit);
 
     fetch(url)
@@ -77,6 +77,7 @@ class Searchbar extends Component {
 
   render() {
     const value = {
+      city: this.state.query,
       current_temp: this.state.current_temp,
       max_temp: this.state.max_temp,
       min_temp: this.state.min_temp,
@@ -91,21 +92,20 @@ class Searchbar extends Component {
     };
     return (
       <ApiContext.Provider value={value}>
-        <form className="App_main" onSubmit={this.handleSubmit}>
+        <form className="App_search" onSubmit={this.handleSubmit}>
           <div className="searchbar_main">
             <City />
             <br />
             <TempScale />
-            <br />
             <Link to="/weathertop">
               <button id="inputbutton" type="button" value="Back">
                 Back
-              </button>{" "}
-            </Link>
+              </button>
+            </Link>{" "}
             <input id="inputbutton" type="submit" value="Submit" />
           </div>
+          <Results />
         </form>
-        <Results />
       </ApiContext.Provider>
     );
   }

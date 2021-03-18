@@ -7,10 +7,10 @@ class TempScale extends Component {
   render() {
     const weather = this.context;
     return (
-      <div>
+      <>
         <div className="searchbar_label">Temperature Scale</div>
-        <ul className="container" onClick={weather.handleUnitClick}>
-          <li className="item">
+        <div className="container" onClick={weather.handleUnitClick}>
+          <div className="item">
             <button
               type="button"
               className={
@@ -22,8 +22,8 @@ class TempScale extends Component {
             >
               &deg;C
             </button>
-          </li>
-          <li className="item">
+          </div>
+          <div className="item">
             <button
               type="button"
               className={
@@ -35,8 +35,8 @@ class TempScale extends Component {
             >
               &deg;F
             </button>
-          </li>
-          <li className="item">
+          </div>
+          <div className="item">
             <button
               type="button"
               className={
@@ -48,10 +48,10 @@ class TempScale extends Component {
             >
               &deg;K
             </button>
-          </li>
-        </ul>
+          </div>
+        </div>
         <ValidationError message={weather.validateTempScale} />
-      </div>
+      </>
     );
   }
 }
