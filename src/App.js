@@ -11,7 +11,6 @@ class App extends Component {
       <>
         <Route exact path="/weathertop" component={HomePage} />
         <Route path="/weather-search" component={Searchbar} />
-        <Route path="/results" component={Results} />
       </>
     );
   }
