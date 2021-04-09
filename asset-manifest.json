@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/weathertop/static/css/main.346fc6cf.chunk.css",
+    "main.css": "/weathertop/static/css/main.5cd891c7.chunk.css",
     "main.js": "/weathertop/static/js/main.7659932c.chunk.js",
     "main.js.map": "/weathertop/static/js/main.7659932c.chunk.js.map",
     "runtime-main.js": "/weathertop/static/js/runtime-main.2c203213.js",
@@ -10,14 +10,14 @@
     "static/js/3.e0a65a39.chunk.js": "/weathertop/static/js/3.e0a65a39.chunk.js",
     "static/js/3.e0a65a39.chunk.js.map": "/weathertop/static/js/3.e0a65a39.chunk.js.map",
     "index.html": "/weathertop/index.html",
-    "static/css/main.346fc6cf.chunk.css.map": "/weathertop/static/css/main.346fc6cf.chunk.css.map",
+    "static/css/main.5cd891c7.chunk.css.map": "/weathertop/static/css/main.5cd891c7.chunk.css.map",
     "static/js/2.0844c6e7.chunk.js.LICENSE.txt": "/weathertop/static/js/2.0844c6e7.chunk.js.LICENSE.txt",
     "static/media/App.css": "/weathertop/static/media/lake2.a47e3086.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.2c203213.js",
     "static/js/2.0844c6e7.chunk.js",
-    "static/css/main.346fc6cf.chunk.css",
+    "static/css/main.5cd891c7.chunk.css",
     "static/js/main.7659932c.chunk.js"
   ]
 }
