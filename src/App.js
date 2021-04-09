@@ -3,7 +3,6 @@ import Searchbar from "./Searchbar/Searchbar";
 import { Route, Link } from "react-router-dom";
 import "./App.css";
 import HomePage from "./HomePage/HomePage";
-import Results from "./Results/Results";
 
 class App extends Component {
   renderMainRoutes() {
